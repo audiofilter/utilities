@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+# TODO:
+# Perl script to extract c subroutines from large file and place
+# into seperate files
+#
+$start = 0;
+#open(TMP_FILE, >/tmp/tmp1) || warn "Cant open $file: $!\n";
+foreach $file (@ARGV) {
+    open(FILE, $file) || warn "Cant open $file: $!\n";
+    while (<FILE>) {
+	if (/^([ \t]*)endmodule/) {
+	    $start = 0;
+#	    print TMP_FILE $_;
+	    print COMFILE $_;
+	    close(COMFILE);
+	}
+	if ($start == 1) {
+	    print COMFILE $_;
+	if (/^([ \t]*)module([ \t]*)(\w+)/) {
+	    $start = 1;
+	    $file1 = $3.'.v';
+	    open(COMFILE,">$file1") || die "Can't create file\n";
+	    print COMFILE $_;
+	}
+    }
+}

@@ -1,0 +1,2 @@
+find . -name '*.h' -exec indent.sh {} \;
+find . -name '*.cpp' -exec indent.sh {} \;

@@ -1,0 +1,15 @@
+;;; File: emacs-format-file
+;;; Stan Warford
+;;; 17 May 2006
+
+(defun emacs-format-function ()
+   "Format the whole buffer."
+   (setq c-basic-offset 2)
+   (c++-mode)
+   (setq c-basic-offset 2)
+;   (c-set-style "stroustrup")
+   (indent-region (point-min) (point-max) nil)
+   (untabify (point-min) (point-max))
+   (save-buffer)
+)
+

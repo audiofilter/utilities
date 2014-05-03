@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+$x = $ENV{'PATH'};
+@array = split(/:/,$x);
+foreach $index (0 .. $#array) {
+	print $array[$index],"\n";
+}

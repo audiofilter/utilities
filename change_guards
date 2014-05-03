@@ -1,0 +1,96 @@
+#!/usr/bin/perl 
+#  NAME  change_guards
+# used for c/c++, .h header files, make the guard name use the filename
+use Digest::MD5 qw(md5_hex);
+# Open the source file.
+$start = 0;
+$count = 0;
+$found = 0;
+$remove_last_line = 0;
+# get filename
+$cf = @ARGV[0];
+$fname = $cf;
+$bak = "$fname.bak";
+$nfname = "$fname.tmp.$$";
+#$rn = genGUID("XXX");
+# replace '.h' with _H_
+$cf =~ s/\.h/_H_/;
+# remove leading path stuff
+$cf =~ s/\.//g;
+$cf =~ s/(\w+)\///g;
+$cf =~ s/\///g;
+# change to uppercase
+$cf = uc($cf);
+# prepend SPLY_
+$cf = "SPLY_".$cf;
+$rv = sprintf("%d",rand(2**50));
+# Add random number + _INCLUDED suffix
+$cf = $cf.$rv."_INCLUDED";
+# confirm to stdout
+#print "Current file is ",$cf,"\n";
+open(OLD,"< $fname");
+open(NEW,"> $nfname");
+while (<OLD>) {
+	if ((/#ifndef (\w+)/) && ($start==0)) {
+		$found = 1;
+		if (/(\w+)_XINCLUDED/) {
+			#print STDERR $fname, " is OK\n";
+			print NEW $_;
+			$start = 2;
+		} else {
+			$start = 1;
+			#print STDERR "Adding ",$cf, " to ", $fname, "\n";
+			print NEW "#ifndef ",$cf,"\n";
+		}
+		if ($count > 0) {
+			print STDERR "Hmm...count = ",$count, " for ",$fname,"\n";
+		} 
+	} elsif ($start==1) {
+		print NEW "#define ",$cf,"\n";
+		$start = 2;
+	} else {
+		print NEW $_ unless eof(OLD);
+	}
+	$count = $count + 1;
+	# don't allow after 5th line!!!
+	if (($count > 5) && ($start != 1)) {
+		$start = -1;
+	}
+	if (eof(OLD)) {
+		#print STDERR "found eof, last line = ",$_;
+		if (/#endif/) {
+			print NEW "#endif //",$cf,"\n";
+			#print STDERR "Replacing with #endif //",$cf,"\n";
+		} else {
+			print NEW $_;
+			print STDERR "????";
+		}
+		next;
+	}
+}
+close(OLD);
+close(NEW);
+#print "Renaming ",$fname, " to ",$bak,"\n";
+#rename($fname,$bak);
+###print "Renaming ",$nfname, " to ",$fname,"\n";
+rename($nfname,$fname);
+
+if ($found == 0) {
+	print "Nothing found in ",$fname,"\n";
+}
+
+# Generate a GUID given a string
+sub genGUID {
+    my $seed = shift;
+    my $md5 = uc md5_hex ($seed);
+    my @octets = $md5 =~ /(.{2})/g;
+    
+    substr $octets[6], 0, 1, '4'; # GUID Version 4
+    substr $octets[8], 0, 1, '8'; # draft-leach-uuids-guids-01.txt GUI
++D variant 
+    my $GUID = "{@octets[0..3]-@octets[4..5]-@octets[6..7]-@octets[8..
++9]-@octets[10..15]}";
+    
+    $GUID =~ s/ //g;
+    return $GUID;
+}
