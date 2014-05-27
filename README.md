@@ -4,6 +4,7 @@ utilities
 Various useful unix/python/perl scripts
 
 zap - Good for killing processes on linux/mac
+
 for Emacs indenting files
 	findformat
 	indent.sh
@@ -13,7 +14,7 @@ ppath - print path 1/line
 
 findguards/change-guards - compile guards for C++
 
-c_sep - for breaking into separate file
+c_sep - for breaking c routines into separate files
 
 em.py - Python's embedded py
 
