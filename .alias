@@ -1,0 +1,54 @@
+alias pdb 'python -m pdb'
+alias gsm 'git status | more '
+alias note '/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \!*'
+alias vmac 'ssh -Y admin@tdglab-mac3.eng.dolby.net'
+#alias vmac 'ssh -Y admin@tdglab-macpro.eng.dolby.net'
+alias matlab '/Applications/MATLAB_R2014a.app/Contents/MacOS/StartMATLAB'
+#alias e '~/bin/ec'
+alias e '/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias emacs '/Applications/Emacs.app/Contents/MacOS/Emacs'
+#alias octave '/Applications/Octave-cli.app/Contents/MacOS/Octave'
+alias gsm 'git status | more'
+alias gitlogs 'git log --pretty=oneline'
+alias gitver 'git log --pretty=oneline | wc -l'
+alias gitMadd 'git diff --name-only --diff-filter=M | xargs git add'
+alias tarc 'tar  cf - . | (cd \!*; tar xfBp -)'
+alias vp 'ssh -X tgkirk-vm-01.eng.dolby.net'
+#alias encmp3 'find . -name "*.wav" -exec lame {} \';
+# General utilites
+alias cd2 'cd ../../'
+alias ll 'ls -latrG'
+alias l 'ls -atrG'
+alias d2u 'find . -type f -exec dos2unix {} {} \;'
+alias u2d 'find .  -type f -exec unix2dos {} {} \;'
+alias cfind 'find . -name "CMakeLists.txt" -print | xargs grep \!*'
+alias gfindf 'find . -type f -print | xargs grep \!*'
+alias gfindc 'find . -name "*.cpp" -print | xargs grep \!*'
+alias gfindh 'find . -name "*.h" -print | xargs grep \!*'
+alias gfind 'find . -type f -name "*" -print | xargs grep \!*'
+alias gfindt 'find . -name "*.txt" -print | xargs grep \!*'
+alias gfindm 'find . -name "*.m" -print | xargs grep \!*'
+alias cbak 'find . -name "*.bak" -exec rm -f {} \;'
+alias lfind 'find . -type f -printf "%TY-%Tm-%Td %TT %p\n" | sort'
+# For remembering commands
+#alias trans 'perl -pi.bak -e tr/OLDCHARS/NEWCHARS FILELIST'
+#alias trim 'perl -ne "print unless $seen{$_}++" \!*'
+#alias subs 'perl -pi.bak -e s/OLDSTRING/NEWSTRING/ FILELIST'
+
+# Replace space with newline
+alias sprep 'perl -npe "s/ /\n/g"'
+alias hgrep 'history | grep \!*'
+alias agrep 'alias | grep \!*'
+
+alias mat '/Applications/MATLAB_R2012b.app/bin/matlab'
+
+alias valg 'valgrind --tool=memcheck --leak-check=full --track-origins=yes \!*'
+
+    
+alias mroe 'more'
+alias sc 'source ~/.cshrc'
+#
+# CD Aliases
+alias bin 'cd ~/bin'
+alias ud 'du | sort -rn | head -20'
+alias setp4 'setenv P4CLIENT tgkirk_dev'

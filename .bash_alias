@@ -1,0 +1,66 @@
+alias look='clang -dM -E -x c /dev/null'
+alias myip="curl http://ipecho.net/plain; echo"
+alias pdb='python -m pdb'
+alias gsm='git status | more '
+alias note='/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \!*'
+alias Smatlab='/Applications/MATLAB_R2014b.app/Contents/MacOS/StartMATLAB'
+alias matlab='/Applications/MATLAB_R2014b.app/bin/matlab'
+alias e='~/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias gsm='git status | more'
+alias gitlogs='git log --pretty=oneline'
+alias gitver='git log --pretty=oneline | wc -l'
+alias gitMadd='git diff --name-only --diff-filter=M | xargs git add'
+#alias tarc='tar  cf - . | (cd \!*; tar xfBp -)'
+alias vp='ssh -X tgkirk-vm-01.eng.dolby.net'
+alias ec='ssh SCP_Mac@scp-macs-pro.eng.dolby.net'
+alias lc='ssh platform_dev@sf-bld-0078-ub.eng.dolby.net'
+#alias encmp3 'find . -name "*.wav" -exec lame {} \';
+# General utilites
+alias cd2='cd ../../'
+#alias ll='ls -latrG'
+#alias l='ls -atrG'
+alias op='open '
+alias d2u='find . -type f -exec dos2unix {} {} \;'
+alias u2d='find .  -type f -exec unix2dos {} {} \;'
+
+cmfind()  { find . -name "CMakeLists.txt" -print | xargs grep "$1";}
+gfindf() { find . -type f -print | xargs grep "$1";}
+gfindp() { find . -name "*.cpp" -print | xargs grep "$1";}
+gfindc() { find . -name "*.c" -print | xargs grep "$1";}
+gfindh() { find . -name "*.h" -print | xargs grep "$1";}
+gfind() { find . -type f -name "*" -print | xargs grep "$1";}
+gfindt() { find . -name "*.txt" -print | xargs grep "$1";}
+gfindm() { find . -name "*.m" -print | xargs grep "$1";}
+
+function pdfman() {
+         man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf
+}
+
+pman() {
+  man -t "${1}" | open -f -a /Appllication/Preview.app/
+}
+
+alias cbak='find . -name "*.bak" -exec rm -f {} \;'
+alias lfind='find . -type f -printf "%TY-%Tm-%Td %TT %p\n" | sort'
+
+# For remembering commands
+#alias trans 'perl -pi.bak -e tr/OLDCHARS/NEWCHARS FILELIST'
+#alias trim 'perl -ne "print unless $seen{$_}++" \!*'
+#alias subs 'perl -pi.bak -e s/OLDSTRING/NEWSTRING/ FILELIST'
+
+# Replace space with newline
+alias sprep='perl -npe "s/ /\n/g"'
+alias hi='history'
+hgrep() { history | grep "$1";}
+agrep() { alias | grep "$1";}
+
+valg() { valgrind --tool=memcheck --leak-check=full --track-origins=yes "$1";}
+alias mroe='more'
+alias sb='source ~/.bashrc'
+alias sc='source ~/.cshrc'
+#
+# CD Aliases
+alias bin='cd ~/bin'
+alias ud='du | sort -rn | head -20'
+alias setp4='export P4CLIENT=tgkirk_dev'
+alias vf='export VAGRANT_VAGRANTFILE=VagrantfileAll'
