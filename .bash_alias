@@ -1,19 +1,20 @@
+alias listen='rtl_fm -M fm -f 851.802M  -f 851.855M -f 852.1M -f 852.304M -f 852.43M -f 853.476 -s 16k -g 50 -l 300 | play -r 16k -t raw -e s -b 16 -c 1 -V1 -'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias look='clang -dM -E -x c /dev/null'
 alias myip="curl http://ipecho.net/plain; echo"
 alias pdb='python -m pdb'
 alias gsm='git status | more '
+alias gst='git status -uno '
 alias note='/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \!*'
 alias Smatlab='/Applications/MATLAB_R2014b.app/Contents/MacOS/StartMATLAB'
 alias matlab='/Applications/MATLAB_R2014b.app/bin/matlab'
 alias e='~/Applications/Emacs.app/Contents/MacOS/Emacs'
 alias gsm='git status | more'
+alias mj='make -j -C ..'
 alias gitlogs='git log --pretty=oneline'
 alias gitver='git log --pretty=oneline | wc -l'
 alias gitMadd='git diff --name-only --diff-filter=M | xargs git add'
 #alias tarc='tar  cf - . | (cd \!*; tar xfBp -)'
-alias vp='ssh -X tgkirk-vm-01.eng.dolby.net'
-alias ec='ssh SCP_Mac@scp-macs-pro.eng.dolby.net'
-alias lc='ssh platform_dev@sf-bld-0078-ub.eng.dolby.net'
 #alias encmp3 'find . -name "*.wav" -exec lame {} \';
 # General utilites
 alias cd2='cd ../../'
@@ -55,6 +56,7 @@ hgrep() { history | grep "$1";}
 agrep() { alias | grep "$1";}
 
 valg() { valgrind --tool=memcheck --leak-check=full --track-origins=yes "$1";}
+alias valg2='valgrind --track-origins=yes --show-reachable=yes --trace-children=yes --leak-check=full'
 alias mroe='more'
 alias sb='source ~/.bashrc'
 alias sc='source ~/.cshrc'
@@ -64,3 +66,6 @@ alias bin='cd ~/bin'
 alias ud='du | sort -rn | head -20'
 alias setp4='export P4CLIENT=tgkirk_dev'
 alias vf='export VAGRANT_VAGRANTFILE=VagrantfileAll'
+
+#
+alias build='xcodebuild | xcpretty -c '

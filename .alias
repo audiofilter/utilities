@@ -1,8 +1,6 @@
 alias pdb 'python -m pdb'
 alias gsm 'git status | more '
 alias note '/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \!*'
-alias vmac 'ssh -Y admin@tdglab-mac3.eng.dolby.net'
-#alias vmac 'ssh -Y admin@tdglab-macpro.eng.dolby.net'
 alias matlab '/Applications/MATLAB_R2014a.app/Contents/MacOS/StartMATLAB'
 #alias e '~/bin/ec'
 alias e '/Applications/Emacs.app/Contents/MacOS/Emacs'
@@ -13,7 +11,6 @@ alias gitlogs 'git log --pretty=oneline'
 alias gitver 'git log --pretty=oneline | wc -l'
 alias gitMadd 'git diff --name-only --diff-filter=M | xargs git add'
 alias tarc 'tar  cf - . | (cd \!*; tar xfBp -)'
-alias vp 'ssh -X tgkirk-vm-01.eng.dolby.net'
 #alias encmp3 'find . -name "*.wav" -exec lame {} \';
 # General utilites
 alias cd2 'cd ../../'

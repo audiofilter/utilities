@@ -1,12 +1,17 @@
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 # added by Anaconda 2.1.0 installer
-export PATH="/Users/tgkirk/anaconda/bin:$PATH"
+#export PATH="/Users/tgkirk/anaconda/bin:$PATH"
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+ulimit -c unlimited
+
 ### Aliases
 
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
+
+alias retop='sudo chown root:wheel /usr/local/bin/htop; sudo chmod u+s /usr/local/bin/htop'
 
 # Color LS
 colorflag="-G"
